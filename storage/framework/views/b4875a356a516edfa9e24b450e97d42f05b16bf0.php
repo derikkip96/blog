@@ -27,6 +27,9 @@
                         <?php echo e(csrf_field()); ?>
 
                         <div class="form-group">
+                            <input class="form-control" type="hidden" name="post_id" value="<?php echo e($post->id); ?>">
+                        </div>
+                        <div class="form-group">
                             <textarea name="body" placeholder="your comment here"  class="form-control"></textarea>
                         </div>
                         <?php echo $__env->make('partials.errors', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

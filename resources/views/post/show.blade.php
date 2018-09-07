@@ -27,6 +27,9 @@
                     <form method="post" action="/posts/{{$post->id}}/comments">
                         {{ csrf_field() }}
                         <div class="form-group">
+                            <input class="form-control" type="hidden" name="post_id" value="{{$post->id}}">
+                        </div>
+                        <div class="form-group">
                             <textarea name="body" placeholder="your comment here"  class="form-control"></textarea>
                         </div>
                         @include('partials.errors')
