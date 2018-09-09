@@ -7,6 +7,11 @@
 
 @include('partials.nav')
 
+@if ($flash = session('message'))
+    <div class="alert alert-success container-fluid">
+        {{$flash}}
+    </div>
+    @endif
 
 <div class="container">
     <div class="row">

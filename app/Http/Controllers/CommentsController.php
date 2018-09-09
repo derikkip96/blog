@@ -13,6 +13,11 @@ class CommentsController extends Controller
      * @param Post $post
      * @return \Illuminate\Http\RedirectResponse
      */
+    public function __construct()
+    {
+         $this->middleware( 'auth');
+    }
+
     public function store(Post $post)
     {
         $this->validate(request(),  [
