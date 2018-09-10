@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\updateFormRequest;
 use Illuminate\Http\Request;
 
 use App\Post;
@@ -65,5 +66,29 @@ class PostsController extends Controller
 
        return redirect('/');
     }
+    public function destroy(Post $post)
+    {
+        $post->delete();
+        return redirect()->home();
+    }
+    public function edit(Post $post)
+    {
+
+        return view('post.edit', compact('post'));
+    }
+    public function update(updateFormRequest $request, Post $post)
+    {
+//        $pst = Post::find($post);
+//        dd($post);
+
+        $post->title = $request->title;
+        $post->body = $request->body;
+        $post-> user_id = auth()->user()->id;
+
+        $post->save();
+
+        return redirect('/');
+    }
+
 
 }

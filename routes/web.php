@@ -19,8 +19,10 @@ Route::post('/posts','PostsController@store');
 Route::post('/posts/{post}/comments','CommentsController@store');
 
 Route::get('/posts/tags/{tag}', 'TagsController@index');
+Route::get('/post/{post}/edit','PostsController@edit')->name('post.edit');
+Route::post('/post/{post}/edit', 'PostsController@update')->name('post.update');
 
-
+Route::delete('/post/{post}/del','PostsController@destroy')->name('post.delete');
 Route::get('/register','RegistrationController@create');
 Route::post('/register','RegistrationController@store')->name('register');
 Route::get('/login', 'SessionsController@create');
