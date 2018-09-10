@@ -2,11 +2,8 @@
 
 namespace App;
 
-
-
 class Comment extends Model
 {
-
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */

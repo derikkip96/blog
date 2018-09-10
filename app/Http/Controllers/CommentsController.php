@@ -9,15 +9,28 @@ use App\Comment;
 class CommentsController extends Controller
 {
 
+    /**
+     * @param Post $post
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function __construct()
+    {
+         $this->middleware( 'auth');
+    }
+    /**
+     * @param Post $post
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function store(Post $post)
     {
         $this->validate(request(),  [
             'body' => 'required'
             ]
         );
-
-        $post->addComment(request('body'));
-
+        auth()->user()->addComment( new Comment([
+                'body' => request('body'),
+                'post_id' => $post->id ])
+        );
         return back();
     }
 

@@ -7,6 +7,12 @@
 
 <?php echo $__env->make('partials.nav', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 
+<?php if($flash = session('message')): ?>
+    <div class="alert alert-success container-fluid">
+        <?php echo e($flash); ?>
+
+    </div>
+    <?php endif; ?>
 
 <div class="container">
     <div class="row">
